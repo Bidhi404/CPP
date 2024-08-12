@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class Vector {
+private:
+    static const int MAX_SIZE = 100;
+    T elements[MAX_SIZE];
+    int size;
+
+public:
+    Vector() : size(0) {}
+
+    void addElement(const T& element) {
+        if (size < MAX_SIZE) {
+            elements[size++] = element;
+        } else {
+            cout << "Vector is full. Cannot add more elements" << endl;
+        }
+    }
+
+    T findSmallest() const {
+        if (size == 0) {
+            throw out_of_range("Vector is empty");
+        }
+        T smallest = elements[0];
+        for (int i = 1; i < size; ++i) {
+            if (elements[i] < smallest) {
+                smallest = elements[i];
+            }
+        }
+        return smallest;
+    }
+
+    bool searchElement(const T& element) const {
+        for (int i = 0; i < size; ++i) {
+            if (elements[i] == element) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    double findAverage() const {
+        if (size == 0) {
+            throw out_of_range("Vector is empty");
+        }
+        T sum = T();
+        for (int i = 0; i < size; ++i) {
+            sum += elements[i];
+        }
+        return static_cast<double>(sum) / size;
+    }
+};
+
+int main() {
+    Vector<int> intVector;
+    intVector.addElement(5);
+    intVector.addElement(3);
+    intVector.addElement(0);
+    intVector.addElement(1);
+    cout << "Smallest element: " << intVector.findSmallest() << endl;
+    cout << "Search for element 3: " << (intVector.searchElement(3) ? "found" : "not found") << endl;
+    cout << "Average of elements: " << intVector.findAverage() << endl;
+    return 0;
+}
