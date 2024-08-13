@@ -38,3 +38,32 @@ public:
     bool operator!=(const Date &other) const {
         return !(*this == other);
     }
+
+    Date& operator++() {
+        day++;
+        if (day > daysInMonth(month, year)) {
+            day = 1;
+            month++;
+            if (month > 12) {
+                month = 1;
+                year++;
+            }
+        }
+        return *this;
+    }
+
+    Date operator+(int days) const {
+        Date temp = *this;
+        temp.day += days;
+
+        while (temp.day > temp.daysInMonth(temp.month, temp.year)) {
+            temp.day -= temp.daysInMonth(temp.month, temp.year);
+            temp.month++;
+            if (temp.month > 12) {
+                temp.month = 1;
+                temp.year++;
+            }
+        }
+
+        return temp;
+    }
