@@ -80,3 +80,12 @@ public:
         cout << day << "/" << month << "/" << year << endl;
     }
 };
+
+int main() {
+    int day, month, year;
+
+    cout << "Enter day: ";
+    cin >> day;
+
+    cout << "Enter month: ";
+    cin >> month;
