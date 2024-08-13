@@ -67,3 +67,16 @@ public:
 
         return temp;
     }
+
+    operator int() const {
+        int totalDays = day;
+        for (int i = 1; i < month; i++) {
+            totalDays += daysInMonth(i, year);
+        }
+        return totalDays;
+    }
+
+    void display() const {
+        cout << day << "/" << month << "/" << year << endl;
+    }
+};
