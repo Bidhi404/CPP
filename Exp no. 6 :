@@ -89,3 +89,31 @@ int main() {
 
     cout << "Enter month: ";
     cin >> month;
+
+    cout << "Enter year: ";
+    cin >> year;
+
+    Date dt(day, month, year);
+
+    cout << "Date: ";
+    dt.display();
+
+    ++dt;
+    cout << "Date after incrementing by one day: ";
+    dt.display();
+
+    int days;
+    cout << "Enter number of days to add: ";
+    cin >> days;
+
+    Date dt2 = dt + days;
+    cout << "Date after adding " << days << " days: ";
+    dt2.display();
+
+    cout << "Is dt2 > dt? " << (dt2 > dt) << endl;
+
+    int daysElapsed = dt2;
+    cout << "Days elapsed in the year for dt2: " << daysElapsed << endl;
+
+    return 0;
+}
